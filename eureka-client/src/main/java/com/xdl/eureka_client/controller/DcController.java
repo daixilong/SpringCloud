@@ -16,5 +16,15 @@ public class DcController {
        System.out.println(services);
        return services;
    }
+	 
+
+
+   /**
+    * 提供一个服务的方法 
+    */
+	 @GetMapping("hello")
+	 public String hello(){
+		 return "hello Word";
+	 }
 
 }
