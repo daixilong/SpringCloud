@@ -22,4 +22,13 @@ public class DcController {
       System.out.println(url);
       return restTemplate.getForObject(url, String.class);
   }
+  /**
+   * 消费一个服务
+   */
+  @GetMapping("/hello")
+  public String hello(){
+	  ServiceInstance serviceInstance = loadBalancerClient.choose("eureka-client");
+      String url = "http://" + serviceInstance.getHost() + ":" + serviceInstance.getPort() + "/hello";
+      return restTemplate.getForObject("http://eureka-client/hello", String.class);
+  }
 }
